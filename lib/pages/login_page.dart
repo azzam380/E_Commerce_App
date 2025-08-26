@@ -8,13 +8,24 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  bool _isPasswordVisible = false;
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
+  // Definisikan warna-warna untuk tema gelap agar mudah diubah
+  static const Color primaryTextColor = Colors.white;
+  static const Color secondaryTextColor = Colors.white70;
+  static const Color iconColor = Colors.white70;
+  static const Color borderColor = Colors.white38;
+  static const Color focusedBorderColor = Colors.white;
+  static const Color buttonColor = Color.fromARGB(255, 42, 98, 222);
+
   @override
   Widget build(BuildContext context) {
+    // 1. Latar belakang utama diubah menjadi hitam
     return Scaffold(
+      backgroundColor: Colors.black,
       body: Center(
         child: SingleChildScrollView(
           padding: const EdgeInsets.all(16),
@@ -25,7 +36,8 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 _buildHeader(),
                 const SizedBox(height: 20),
-                Image.asset('assets/logo.png', height: 80),
+                // Logo Anda akan terlihat jelas di atas background hitam
+                Image.asset('assets/images/Logo.jpg', height: 80),
                 const SizedBox(height: 20),
                 _buildEmailField(),
                 const SizedBox(height: 20),
@@ -50,13 +62,15 @@ class _LoginPageState extends State<LoginPage> {
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.bold,
-            color: Color(0xFF4C53A5),
+            // 2. Warna teks diubah menjadi putih
+            color: primaryTextColor,
           ),
         ),
         SizedBox(height: 10),
         Text(
           'Login to continue',
-          style: TextStyle(fontSize: 18, color: Color(0xFF4C53A5)),
+          // 2. Warna teks diubah menjadi putih pudar
+          style: TextStyle(fontSize: 18, color: secondaryTextColor),
         ),
       ],
     );
@@ -65,16 +79,25 @@ class _LoginPageState extends State<LoginPage> {
   Widget _buildEmailField() {
     return TextFormField(
       controller: _emailController,
+      style: TextStyle(color: primaryTextColor), // Warna teks input
       decoration: InputDecoration(
         labelText: 'Email',
-        prefixIcon: Icon(Icons.email, color: Color(0xFF4C53A5)),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+        labelStyle: TextStyle(color: secondaryTextColor),
+        prefixIcon: Icon(Icons.email, color: iconColor),
+        // 3. Border diubah agar terlihat di background hitam
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: borderColor),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: focusedBorderColor),
+        ),
       ),
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Email tidak boleh kosong';
         }
-        // Simple email validation regex
         if (!RegExp(r'\S+@\S+\.\S+').hasMatch(value)) {
           return 'Format email tidak valid';
         }
@@ -86,12 +109,34 @@ class _LoginPageState extends State<LoginPage> {
   Widget _buildPasswordField() {
     return TextFormField(
       controller: _passwordController,
+      obscureText: !_isPasswordVisible,
+      style: TextStyle(color: primaryTextColor), // Warna teks input
       decoration: InputDecoration(
         labelText: 'Password',
-        prefixIcon: Icon(Icons.lock, color: Color(0xFF4C53A5)),
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+        labelStyle: TextStyle(color: secondaryTextColor),
+        prefixIcon: Icon(Icons.lock, color: iconColor),
+        // 3. Border diubah agar terlihat
+        enabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: borderColor),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(10),
+          borderSide: BorderSide(color: focusedBorderColor),
+        ),
+        suffixIcon: IconButton(
+          icon: Icon(
+            _isPasswordVisible ? Icons.visibility : Icons.visibility_off,
+            // 2. Warna ikon diubah
+            color: iconColor,
+          ),
+          onPressed: () {
+            setState(() {
+              _isPasswordVisible = !_isPasswordVisible;
+            });
+          },
+        ),
       ),
-      obscureText: true,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'Password tidak boleh kosong';
@@ -112,13 +157,14 @@ class _LoginPageState extends State<LoginPage> {
         }
       },
       style: ElevatedButton.styleFrom(
-        backgroundColor: Color(0xFF4C53A5),
+        // 2. Warna tombol diubah agar kontras
+        backgroundColor: buttonColor,
         padding: EdgeInsets.symmetric(horizontal: 80, vertical: 15),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       ),
       child: const Text(
         'Login',
-        style: TextStyle(color: Colors.white, fontSize: 18),
+        style: TextStyle(color: primaryTextColor, fontSize: 18),
       ),
     );
   }
@@ -126,11 +172,12 @@ class _LoginPageState extends State<LoginPage> {
   Widget _buildSignUpLink(BuildContext context) {
     return TextButton(
       onPressed: () {
-        Navigator.pushNamed(context, '/');
+        Navigator.pushNamed(context, 'RegisterPage');
       },
       child: const Text(
         'Don\'t have an account? Sign Up',
-        style: TextStyle(color: Color(0xFF4C53A5)),
+        // 2. Warna teks diubah menjadi putih
+        style: TextStyle(color: primaryTextColor),
       ),
     );
   }
