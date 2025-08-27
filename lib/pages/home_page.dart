@@ -87,8 +87,8 @@ class HomePageContent extends StatelessWidget {
             decoration: const BoxDecoration(
               color: Color(0xFFEDECF2),
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(35),
-                topRight: Radius.circular(35),
+                topLeft: Radius.circular(0),
+                topRight: Radius.circular(0),
               ),
             ),
             child: Column(
@@ -100,7 +100,7 @@ class HomePageContent extends StatelessWidget {
                   height: 50,
                   decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(0),
                   ),
                   child: Row(
                     children: [
