@@ -8,39 +8,48 @@ class AccountPage extends StatelessWidget {
 
 @override
 Widget build(BuildContext context) {
-  return Scaffold(
-    extendBodyBehindAppBar: true,
-    appBar: AppBar(
-      title: const Text('Account', style: TextStyle(color: Colors.white)),
-      backgroundColor: Colors.transparent,
-      elevation: 0,
+  // 1. Bungkus semuanya dengan Container untuk gradien
+  return Container(
+    decoration: const BoxDecoration(
+      gradient: LinearGradient(
+        colors: [Color(0xFF6B7CDA), Color(0xFF4C53A5)],
+        begin: Alignment.topCenter,
+        end: Alignment.bottomCenter,
+      ),
     ),
-    body: Stack(
-      children: [
-        Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Color(0xFF6B7CDA), Color(0xFF4C53A5)],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
+    child: Scaffold(
+      // 2. Buat Scaffold menjadi transparan agar gradien di belakangnya terlihat
+      backgroundColor: Colors.transparent,
+      // 3. AppBar tetap putih solid seperti yang Anda inginkan
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 2.0,
+        scrolledUnderElevation: 2.0,
+        title: const Text(
+          'Account',
+          style: TextStyle(
+            color: Color(0xFF4C53A5),
+            fontWeight: FontWeight.bold,
           ),
         ),
-
-        SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
-            child: Column(
-              children: [
-                const SizedBox(height: 100),
-                _buildProfileSection(),
-                const SizedBox(height: 20),
-                _buildSettingsSection(context),
-              ],
-            ),
+        iconTheme: const IconThemeData(
+          color: Color(0xFF4C53A5),
+        ),
+      ),
+      // 4. Hapus gradien dari body karena sudah dipindahkan ke luar
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Column(
+            children: [
+              const SizedBox(height: 20),
+              _buildProfileSection(),
+              const SizedBox(height: 20),
+              _buildSettingsSection(context),
+            ],
           ),
         ),
-      ],
+      ),
     ),
   );
 }
