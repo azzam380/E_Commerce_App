@@ -8,7 +8,6 @@ class AccountPage extends StatelessWidget {
 
 @override
 Widget build(BuildContext context) {
-  // 1. Bungkus semuanya dengan Container untuk gradien
   return Container(
     decoration: const BoxDecoration(
       gradient: LinearGradient(
@@ -18,9 +17,7 @@ Widget build(BuildContext context) {
       ),
     ),
     child: Scaffold(
-      // 2. Buat Scaffold menjadi transparan agar gradien di belakangnya terlihat
       backgroundColor: Colors.transparent,
-      // 3. AppBar tetap putih solid seperti yang Anda inginkan
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 2.0,
@@ -36,7 +33,6 @@ Widget build(BuildContext context) {
           color: Color(0xFF4C53A5),
         ),
       ),
-      // 4. Hapus gradien dari body karena sudah dipindahkan ke luar
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -131,14 +127,12 @@ Widget build(BuildContext context) {
           icon: Icons.person_outline,
           title: 'Profile',
           onTap: () {
-            // Sebaiknya tidak melakukan navigasi ke halaman yang sama
           },
         ),
         _buildSettingItem(
           icon: Icons.lock_outline,
           title: 'Change Password',
           onTap: () {
-            // PERBAIKAN: Rute disesuaikan dengan main.dart Anda
             Navigator.pushNamed(context, 'ChangePasswordPage');
           },
         ),
@@ -193,7 +187,6 @@ Widget build(BuildContext context) {
                         TextButton(
                           child: const Text('OK'),
                           onPressed: () {
-                            // PERBAIKAN: Rute disesuaikan dengan main.dart Anda
                             Navigator.of(successContext)
                                 .pushNamedAndRemoveUntil('LoginPage', (route) => false);
                           },
