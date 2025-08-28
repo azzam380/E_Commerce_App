@@ -13,7 +13,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Change Password'),
-        backgroundColor: const Color(0xFF4C53A5),
+        backgroundColor: const Color(0xFFEDECF2),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -39,7 +39,8 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
               onPressed: () {
                 // Logika untuk menyimpan password baru
               },
-              child: const Text('Save Changes'),
+              style: ElevatedButton.styleFrom(backgroundColor: const Color.fromARGB(255, 1, 177, 30)),
+              child: const Text('Save Changes', style: TextStyle(color: Colors.white)),
             )
           ],
         ),

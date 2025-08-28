@@ -66,26 +66,22 @@ class CartAppBar extends StatelessWidget {
       child: Row(
         children: [
           // UPDATE: Tombol kembali diaktifkan
-          InkWell(
-            onTap: () => Navigator.pop(context),
-            child: const Icon(Icons.arrow_back, size: 30, color: Color(0xFF4C53A5)),
-          ),
           const SizedBox(width: 15),
           const Row(
             children: [
-              Icon(Icons.shopping_cart_outlined, color: Color(0xFF4C53A5)),
+              Icon(Icons.shopping_cart_outlined, color: Color.fromARGB(255, 1, 177, 30)),
               SizedBox(width: 10),
               Text('My Cart',
                   style: TextStyle(
                       fontSize: 23,
                       fontWeight: FontWeight.bold,
-                      color: Color(0xFF4C53A5))),
+                      color: Color.fromARGB(255, 1, 177, 30))),
             ],
           ),
           const Spacer(),
           PopupMenuButton(
             icon:
-                const Icon(Icons.more_vert, size: 30, color: Color(0xFF4C53A5)),
+                const Icon(Icons.more_vert, size: 30, color: Color.fromARGB(255, 0, 0, 0)),
             itemBuilder: (context) => [
               const PopupMenuItem(value: 1, child: Text("Clear Cart")),
               const PopupMenuItem(value: 2, child: Text("Save for Later")),
@@ -226,7 +222,7 @@ class CartBottomNavBar extends StatelessWidget {
             children: [
               const Text('Total:',
                   style: TextStyle(
-                      color: Color(0xFF4C53A5),
+                      color: Color.fromARGB(255, 0, 0, 0),
                       fontSize: 22,
                       fontWeight: FontWeight.bold)),
               // UPDATE: Total harga dihitung otomatis dari provider
@@ -235,7 +231,7 @@ class CartBottomNavBar extends StatelessWidget {
                 style: const TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
-                    color: Color(0xFF4C53A5)),
+                    color: Color.fromARGB(255, 0, 0, 0)),
               )
             ],
           ),
@@ -246,7 +242,7 @@ class CartBottomNavBar extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF4C53A5),
+                  backgroundColor: const Color.fromARGB(255, 1, 177, 30),
                   foregroundColor: Colors.white,
                   shape: const RoundedRectangleBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
@@ -301,7 +297,7 @@ class CartBottomNavBar extends StatelessWidget {
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                backgroundColor: const Color(0xFF4C53A5),
+                backgroundColor: const Color.fromARGB(255, 1, 177, 30),
                 foregroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10),

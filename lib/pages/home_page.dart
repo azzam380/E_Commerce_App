@@ -40,24 +40,24 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
-        color: const Color.fromARGB(255, 76, 85, 165),
-        buttonBackgroundColor: const Color.fromARGB(203, 0, 255, 234),
+        color: const Color.fromARGB(255, 1, 177, 30),
+        buttonBackgroundColor: const Color.fromARGB(255, 1, 177, 30),
         height: 60,
         items: <Widget>[
           Icon(
             Icons.home,
             size: 30,
-            color: _currentIndex == 0 ? Colors.blueAccent : Colors.white,
+            color: _currentIndex == 0 ? Colors.white : Colors.white,
           ),
           Icon(
             Icons.shopping_cart,
             size: 30,
-            color: _currentIndex == 1 ? Colors.blueAccent : Colors.white,
+            color: _currentIndex == 1 ? Colors.white : Colors.white,
           ),
           Icon(
             Icons.person,
             size: 30,
-            color: _currentIndex == 2 ? Colors.blueAccent : Colors.white,
+            color: _currentIndex == 2 ? Colors.white : Colors.white,
           ),
         ],
         index: _currentIndex,
@@ -148,14 +148,14 @@ class _HomePageContentState extends State<HomePageContent> {
                               decoration: const InputDecoration(border: InputBorder.none, hintText: "Search here..."),
                             ),
                           ),
-                          const Icon(Icons.camera_alt, size: 27, color: Color(0xFF4C53A5)),
+                          const Icon(Icons.camera_alt, size: 27, color: Color.fromARGB(255, 0, 0, 0)),
                         ],
                       ),
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
                       margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                      child: const Text("Categories", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color(0xFF4C53A5))),
+                      child: const Text("Categories", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 0, 0, 0))),
                     ),
                     const CategoriesWidget(),
                     Container(
@@ -164,8 +164,8 @@ class _HomePageContentState extends State<HomePageContent> {
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Produk Terlaris", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color(0xFF4C53A5))),
-                          Icon(Icons.filter_list, color: Color(0xFF4C53A5)),
+                          Text("Produk Terlaris", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 0, 0, 0))),
+                          Icon(Icons.filter_list, color: Color.fromARGB(255, 0, 0, 0)),
                         ],
                       ),
                     ),
@@ -191,10 +191,10 @@ class HomeAppBar extends StatelessWidget {
       padding: const EdgeInsets.all(25),
       child: Row(
         children: [
-          const Icon(Icons.sort, size: 30, color: Color(0xFF4C53A5)),
+          const Icon(Icons.sort, size: 30, color: Color.fromARGB(255, 0, 0, 0)),
           const Padding(
             padding: EdgeInsets.only(left: 20),
-            child: Text('Ecoglobal', style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold, color: Color(0xFF4C53A5))),
+            child: Text('indopedia', style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 1, 177, 30))),
           ),
           const Spacer(),
           badges.Badge(
@@ -204,7 +204,7 @@ class HomeAppBar extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(context, 'ListChat');
               },
-              child: const Icon(Icons.message_sharp, size: 32, color: Color(0xFF4C53A5)),
+              child: const Icon(Icons.message_sharp, size: 32, color: Color.fromARGB(255, 0, 0, 0)),
             ),
           ),
         ],
@@ -232,7 +232,7 @@ class CategoriesWidget extends StatelessWidget {
                 children: [
                   Image.asset('assets/images/categories/${i + 1}.jpg', width: 40, height: 40),
                   const SizedBox(width: 10),
-                  Text(categories[i], style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17, color: Color(0xFF4C53A5))),
+                  Text(categories[i], style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17, color: Color.fromARGB(255, 0, 0, 0))),
                 ],
               ),
             ),
@@ -279,7 +279,7 @@ class ItemsWidget extends StatelessWidget {
                       children: [
                         Container(
                           padding: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(color: const Color(0xFF4C53A5), borderRadius: BorderRadius.circular(20)),
+                          decoration: BoxDecoration(color: const Color.fromARGB(255, 1, 177, 30), borderRadius: BorderRadius.circular(20)),
                           child: const Text('-50%', style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold)),
                         ),
                         const Icon(Icons.favorite_border, color: Colors.red),
@@ -295,7 +295,7 @@ class ItemsWidget extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.only(bottom: 8),
                       alignment: Alignment.centerLeft,
-                      child: Text(product['name'], style: const TextStyle(fontSize: 18, color: Color(0xFF4C53A5), fontWeight: FontWeight.bold)),
+                      child: Text(product['name'], style: const TextStyle(fontSize: 18, color: Color.fromARGB(255, 0, 0, 0), fontWeight: FontWeight.bold)),
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
@@ -306,7 +306,7 @@ class ItemsWidget extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(product['price'], style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Color(0xFF4C53A5))),
+                          Text(product['price'], style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 0, 0, 0))),
                           // UPDATE: Tombol keranjang sekarang berfungsi
                           IconButton(
                             onPressed: () {
@@ -319,7 +319,7 @@ class ItemsWidget extends StatelessWidget {
                                 ),
                               );
                             },
-                            icon: const Icon(Icons.shopping_cart, size: 20, color: Color(0xFF4C53A5)),
+                            icon: const Icon(Icons.shopping_cart, size: 20, color: Color.fromARGB(255, 0, 0, 0)),
                           )
                         ],
                       ),

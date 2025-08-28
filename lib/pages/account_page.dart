@@ -11,7 +11,7 @@ Widget build(BuildContext context) {
   return Container(
     decoration: const BoxDecoration(
       gradient: LinearGradient(
-        colors: [Color(0xFF6B7CDA), Color(0xFF4C53A5)],
+        colors: [Color(0xFFEDECF2), Color(0xFFEDECF2)],
         begin: Alignment.topCenter,
         end: Alignment.bottomCenter,
       ),
@@ -25,7 +25,7 @@ Widget build(BuildContext context) {
         title: const Text(
           'Account',
           style: TextStyle(
-            color: Color(0xFF4C53A5),
+            color: Color.fromARGB(255, 1, 177, 30),
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -81,13 +81,13 @@ Widget build(BuildContext context) {
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
-                  color: Colors.white,
+                  color: Colors.black,
                 ),
               ),
               SizedBox(height: 5),
               Text(
                 'user@example.com',
-                style: TextStyle(color: Colors.white70),
+                style: TextStyle(color: Colors.black),
               ),
             ],
           ),
@@ -109,7 +109,7 @@ Widget build(BuildContext context) {
       margin: const EdgeInsets.symmetric(vertical: 8),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
       child: ListTile(
-        leading: Icon(icon, color: const Color(0xFF4C53A5), size: 28),
+        leading: Icon(icon, color: Colors.blueGrey, size: 28),
         title: Text(
           title,
           style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
@@ -167,12 +167,12 @@ Widget build(BuildContext context) {
           content: const Text('Are you sure you want to logout?'),
           actions: [
             TextButton(
-              child: const Text('Cancel'),
+              child: const Text('Cancel', style: TextStyle(color: Colors.black)),
               onPressed: () => Navigator.of(dialogContext).pop(),
             ),
             ElevatedButton(
               style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-              child: const Text('Logout'),
+              child: const Text('Logout', style: TextStyle(color: Colors.white)),
               onPressed: () {
                 Navigator.of(dialogContext).pop();
                 showDialog(

@@ -14,10 +14,10 @@ class ListChat extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Chat', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: Color(0xFF4C53A5))),
+        title: const Text('Chat', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25, color: Color.fromARGB(255, 1, 177, 30))),
         backgroundColor: Colors.white,
         elevation: 1,
-        iconTheme: const IconThemeData(color: Color(0xFF4C53A5)),
+        iconTheme: const IconThemeData(color: Colors.black),
         actions: [IconButton(icon: const Icon(Icons.search), onPressed: () {})],
       ),
       body: Column(
@@ -27,7 +27,7 @@ class ListChat extends StatelessWidget {
             color: Colors.white,
             child: Row(
               children: [
-                TextButton(onPressed: () {}, child: const Text('Semua', style: TextStyle(color: Color(0xFF4C53A5), fontWeight: FontWeight.bold, fontSize: 16))),
+                TextButton(onPressed: () {}, child: const Text('Semua', style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16))),
                 const SizedBox(width: 10),
                 TextButton(onPressed: () {}, child: const Text('Belum Dibaca', style: TextStyle(color: Colors.black54, fontWeight: FontWeight.normal, fontSize: 16))),
               ],
