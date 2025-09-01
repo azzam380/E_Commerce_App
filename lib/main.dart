@@ -9,14 +9,14 @@ import 'pages/home_page.dart';
 import 'pages/list_chat.dart';
 import 'pages/detail_chat.dart';
 import 'pages/cart_provider.dart';
+import 'pages/detail_page.dart';
 
 void main() {
   runApp(
-      ChangeNotifierProvider(
+    ChangeNotifierProvider(
       create: (context) => CartProvider(),
       child: const MyApp(),
     ),
-    
   );
 }
 
@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       initialRoute: 'LoginPage',
+      // UPDATE: Perbaiki dan pisahkan logika rute di sini
       routes: {
         'LoginPage': (context) => const LoginPage(),
         'AccountPage': (context) => const AccountPage(),
@@ -36,16 +37,31 @@ class MyApp extends StatelessWidget {
         'CartPage': (context) => const CartPage(),
         'HomePage': (context) => const HomePage(),
         'ListChat': (context) => const ListChat(),
+
+        // PERBAIKAN: Tambahkan pengecekan null
         'ChatDetail': (context) {
-          // Mengambil data (Map) yang dikirim dari ListChat
-          final args =
-              ModalRoute.of(context)!.settings.arguments as Map<String, String>;
-          final contactName = args['name']!;
-          final contactAvatar = args['avatar']!;
-          // Mengirim data ke ChatScreen
-          return ChatScreen(
-            contactName: contactName,
-            contactAvatar: contactAvatar,
+          final args = ModalRoute.of(context)!.settings.arguments;
+          if (args is Map<String, String>) {
+            return ChatScreen(
+              contactName: args['name']!,
+              contactAvatar: args['avatar']!,
+            );
+          }
+          // Jika tidak ada argumen, tampilkan halaman eror
+          return const Scaffold(
+            body: Center(child: Text("Error: Chat data not found")),
+          );
+        },
+
+        // PERBAIKAN: Tambahkan pengecekan null
+        'DetailPage': (context) {
+          final args = ModalRoute.of(context)!.settings.arguments;
+          if (args is Map<String, dynamic>) {
+            return DetailPage(product: args);
+          }
+          // Jika tidak ada argumen, tampilkan halaman eror
+          return const Scaffold(
+            body: Center(child: Text("Error: Product data not found")),
           );
         },
       },

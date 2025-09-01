@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:badges/badges.dart' as badges;
-import 'package:provider/provider.dart'; // PENTING: Tambahkan import ini
+import 'package:provider/provider.dart';
 import 'cart_page.dart';
 import 'account_page.dart';
 import 'cart_provider.dart';
+import 'detail_page.dart';
+
+// UPDATE: Mendefinisikan tema warna agar konsisten
+const Color primaryColor = Color(0xFF01B11E); // Hijau
+const Color secondaryColor = Colors.black;
+const Color accentColor = Color(0xFF01B11E);
 
 // --- WIDGET UTAMA (NAVIGATION & PAGEVIEW) ---
 class HomePage extends StatefulWidget {
@@ -40,25 +46,14 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
-        color: const Color.fromARGB(255, 1, 177, 30),
-        buttonBackgroundColor: const Color.fromARGB(255, 1, 177, 30),
+        // UPDATE: Warna disesuaikan dengan tema baru
+        color: primaryColor,
+        buttonBackgroundColor: accentColor,
         height: 60,
         items: <Widget>[
-          Icon(
-            Icons.home,
-            size: 30,
-            color: _currentIndex == 0 ? Colors.white : Colors.white,
-          ),
-          Icon(
-            Icons.shopping_cart,
-            size: 30,
-            color: _currentIndex == 1 ? Colors.white : Colors.white,
-          ),
-          Icon(
-            Icons.person,
-            size: 30,
-            color: _currentIndex == 2 ? Colors.white : Colors.white,
-          ),
+          Icon(Icons.home, size: 30, color: _currentIndex == 0 ? Colors.white : Colors.white),
+          Icon(Icons.shopping_cart, size: 30, color: _currentIndex == 1 ? Colors.white : Colors.white),
+          Icon(Icons.person, size: 30, color: _currentIndex == 2 ? Colors.white : Colors.white),
         ],
         index: _currentIndex,
         onTap: (index) {
@@ -85,7 +80,7 @@ class _HomePageContentState extends State<HomePageContent> {
     {'name': 'Helm Keren','description': 'Deskripsi untuk helm','price': '\$75','image': 'assets/images/items/1.jpeg'},
     {'name': 'Sepatu Lari','description': 'Deskripsi untuk sepatu','price': '\$55','image': 'assets/images/items/2.jpeg'},
     {'name': 'Sepatu Biru','description': 'Deskripsi untuk sepatu biru','price': '\$65','image': 'assets/images/items/3.jpeg'},
-    {'name': 'Jam Tangan','description': 'Deskripsi untuk jam','price': '\$90','image': 'assets/images/items/4.jpeg'},
+    {'name': 'Handphone','description': 'Deskripsi untuk handphone','price': '\$90','image': 'assets/images/items/4.jpeg'},
   ];
 
   List<Map<String, dynamic>> _filteredProducts = [];
@@ -127,7 +122,14 @@ class _HomePageContentState extends State<HomePageContent> {
               const HomeAppBar(),
               Container(
                 padding: const EdgeInsets.only(top: 15),
-                decoration: const BoxDecoration(color: Color(0xFFEDECF2)),
+                decoration: const BoxDecoration(
+                  color: Color(0xFFEDECF2),
+                  // UPDATE: Mengembalikan sudut melengkung agar lebih menarik
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(35),
+                    topRight: Radius.circular(35),
+                  ),
+                ),
                 child: Column(
                   children: [
                     Container(
@@ -148,14 +150,14 @@ class _HomePageContentState extends State<HomePageContent> {
                               decoration: const InputDecoration(border: InputBorder.none, hintText: "Search here..."),
                             ),
                           ),
-                          const Icon(Icons.camera_alt, size: 27, color: Color.fromARGB(255, 0, 0, 0)),
+                          const Icon(Icons.camera_alt, size: 27, color: secondaryColor),
                         ],
                       ),
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
                       margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
-                      child: const Text("Categories", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 0, 0, 0))),
+                      child: const Text("Categories", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: secondaryColor)),
                     ),
                     const CategoriesWidget(),
                     Container(
@@ -164,8 +166,8 @@ class _HomePageContentState extends State<HomePageContent> {
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text("Produk Terlaris", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 0, 0, 0))),
-                          Icon(Icons.filter_list, color: Color.fromARGB(255, 0, 0, 0)),
+                          Text("Produk Terlaris", style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold, color: secondaryColor)),
+                          Icon(Icons.filter_list, color: secondaryColor),
                         ],
                       ),
                     ),
@@ -191,10 +193,10 @@ class HomeAppBar extends StatelessWidget {
       padding: const EdgeInsets.all(25),
       child: Row(
         children: [
-          const Icon(Icons.sort, size: 30, color: Color.fromARGB(255, 0, 0, 0)),
+          const Icon(Icons.sort, size: 30, color: secondaryColor),
           const Padding(
             padding: EdgeInsets.only(left: 20),
-            child: Text('indopedia', style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 1, 177, 30))),
+            child: Text('Indopedia', style: TextStyle(fontSize: 23, fontWeight: FontWeight.bold, color: primaryColor)),
           ),
           const Spacer(),
           badges.Badge(
@@ -204,7 +206,7 @@ class HomeAppBar extends StatelessWidget {
               onTap: () {
                 Navigator.pushNamed(context, 'ListChat');
               },
-              child: const Icon(Icons.message_sharp, size: 32, color: Color.fromARGB(255, 0, 0, 0)),
+              child: const Icon(Icons.message_sharp, size: 32, color: secondaryColor),
             ),
           ),
         ],
@@ -232,7 +234,7 @@ class CategoriesWidget extends StatelessWidget {
                 children: [
                   Image.asset('assets/images/categories/${i + 1}.jpg', width: 40, height: 40),
                   const SizedBox(width: 10),
-                  Text(categories[i], style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17, color: Color.fromARGB(255, 0, 0, 0))),
+                  Text(categories[i], style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 17, color: secondaryColor)),
                 ],
               ),
             ),
@@ -249,7 +251,6 @@ class ItemsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // UPDATE: Akses CartProvider untuk menambahkan item
     final cartProvider = Provider.of<CartProvider>(context, listen: false);
 
     return products.isEmpty
@@ -279,14 +280,17 @@ class ItemsWidget extends StatelessWidget {
                       children: [
                         Container(
                           padding: const EdgeInsets.all(5),
-                          decoration: BoxDecoration(color: const Color.fromARGB(255, 1, 177, 30), borderRadius: BorderRadius.circular(20)),
+                          decoration: BoxDecoration(color: primaryColor, borderRadius: BorderRadius.circular(20)),
                           child: const Text('-50%', style: TextStyle(fontSize: 14, color: Colors.white, fontWeight: FontWeight.bold)),
                         ),
                         const Icon(Icons.favorite_border, color: Colors.red),
                       ],
                     ),
+                    // UPDATE: Navigasi ke halaman detail produk diaktifkan
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        Navigator.pushNamed(context, 'DetailPage', arguments: product);
+                      },
                       child: Container(
                         margin: const EdgeInsets.all(10),
                         child: Image.asset(product['image'], height: 100, width: 100),
@@ -295,7 +299,7 @@ class ItemsWidget extends StatelessWidget {
                     Container(
                       padding: const EdgeInsets.only(bottom: 8),
                       alignment: Alignment.centerLeft,
-                      child: Text(product['name'], style: const TextStyle(fontSize: 18, color: Color.fromARGB(255, 0, 0, 0), fontWeight: FontWeight.bold)),
+                      child: Text(product['name'], style: const TextStyle(fontSize: 18, color: secondaryColor, fontWeight: FontWeight.bold)),
                     ),
                     Container(
                       alignment: Alignment.centerLeft,
@@ -306,8 +310,7 @@ class ItemsWidget extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(product['price'], style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Color.fromARGB(255, 0, 0, 0))),
-                          // UPDATE: Tombol keranjang sekarang berfungsi
+                          Text(product['price'], style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: secondaryColor)),
                           IconButton(
                             onPressed: () {
                               cartProvider.addToCart(product);
@@ -319,7 +322,7 @@ class ItemsWidget extends StatelessWidget {
                                 ),
                               );
                             },
-                            icon: const Icon(Icons.shopping_cart, size: 20, color: Color.fromARGB(255, 0, 0, 0)),
+                            icon: const Icon(Icons.shopping_cart, size: 20, color: secondaryColor),
                           )
                         ],
                       ),
