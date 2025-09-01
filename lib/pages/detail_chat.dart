@@ -20,7 +20,7 @@ class _ChatScreenState extends State<ChatScreen> {
     {'text': 'Hallo', 'isMe': true, 'time': '12:55'},
     {'text': 'Ada yang bisa dibantu?', 'isMe': false, 'time': '13:00'},
     {
-      'text': 'Tentu, saya ingin bertanya tentang produk helm ini.',
+      'text': 'Tentu, saya ingin bertanya tentang produk sepatu ini.',
       'isMe': true,
       'time': '13:01'
     },

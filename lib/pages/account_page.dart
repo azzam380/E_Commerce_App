@@ -77,7 +77,7 @@ Widget build(BuildContext context) {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               Text(
-                'Username',
+                'Azzam',
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -86,7 +86,7 @@ Widget build(BuildContext context) {
               ),
               SizedBox(height: 5),
               Text(
-                'user@example.com',
+                'azzamidn242gmail.com',
                 style: TextStyle(color: Colors.black),
               ),
             ],
