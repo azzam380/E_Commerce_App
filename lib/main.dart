@@ -38,28 +38,26 @@ class MyApp extends StatelessWidget {
         'HomePage': (context) => const HomePage(),
         'ListChat': (context) => const ListChat(),
 
-        // PERBAIKAN: Tambahkan pengecekan null
         'ChatDetail': (context) {
           final args = ModalRoute.of(context)!.settings.arguments;
+          // Lakukan konversi tipe secara eksplisit di sini juga untuk keamanan
           if (args is Map<String, String>) {
             return ChatScreen(
               contactName: args['name']!,
               contactAvatar: args['avatar']!,
             );
           }
-          // Jika tidak ada argumen, tampilkan halaman eror
           return const Scaffold(
             body: Center(child: Text("Error: Chat data not found")),
           );
         },
 
-        // PERBAIKAN: Tambahkan pengecekan null
         'DetailPage': (context) {
           final args = ModalRoute.of(context)!.settings.arguments;
           if (args is Map<String, dynamic>) {
-            return DetailPage(product: args);
+            // UPDATE: Tambahkan 'as Map<String, dynamic>' untuk memastikan tipe data
+            return DetailPage(product: args as Map<String, dynamic>);
           }
-          // Jika tidak ada argumen, tampilkan halaman eror
           return const Scaffold(
             body: Center(child: Text("Error: Product data not found")),
           );

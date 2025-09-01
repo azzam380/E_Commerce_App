@@ -5,23 +5,25 @@ class CartProvider extends ChangeNotifier {
 
   List<Map<String, dynamic>> get cartItems => _cartItems;
 
-  // UPDATE: Menambahkan parameter quantity opsional
-  void addToCart(Map<String, dynamic> product, {int quantity = 1}) {
-    int index = _cartItems.indexWhere((item) => item['name'] == product['name']);
+  void addToCart(Map<String, dynamic> product) {
+    // Kunci unik sekarang adalah kombinasi nama, ukuran, dan warna
+    int index = _cartItems.indexWhere((item) =>
+        item['name'] == product['name'] &&
+        item['size'] == product['size'] &&
+        item['color'] == product['color']);
 
     if (index != -1) {
-      // UPDATE: Menambahkan kuantitas sesuai input, bukan hanya ++
-      _cartItems[index]['quantity'] += quantity;
+      // Jika item yang identik sudah ada, tambahkan kuantitasnya
+      _cartItems[index]['quantity'] += product['quantity'];
     } else {
-      // UPDATE: Menambahkan produk dengan kuantitas sesuai input
-      _cartItems.add({...product, 'quantity': quantity});
+      // Jika belum ada, tambahkan sebagai item baru
+      _cartItems.add(product);
     }
-    
     notifyListeners();
   }
 
-  void removeFromCart(Map<String, dynamic> product) {
-    _cartItems.removeWhere((item) => item['name'] == product['name']);
+  void removeFromCart(int index) {
+    _cartItems.removeAt(index);
     notifyListeners();
   }
 
