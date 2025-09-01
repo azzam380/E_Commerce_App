@@ -15,11 +15,11 @@ class _LoginPageState extends State<LoginPage> {
 
   // Definisikan warna-warna untuk tema gelap agar mudah diubah
   static const Color primaryTextColor = Colors.white;
-  static const Color secondaryTextColor = Colors.white70;
-  static const Color iconColor = Colors.white70;
-  static const Color borderColor = Colors.white38;
+  static const Color secondaryTextColor = Colors.white;
+  static const Color iconColor = Colors.white;
+  static const Color borderColor = Colors.white;
   static const Color focusedBorderColor = Colors.white;
-  static const Color buttonColor = Color.fromARGB(255, 42, 98, 222);
+  static const Color buttonColor = Color(0xFF01B11E);
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,6 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 _buildHeader(),
                 const SizedBox(height: 20),
-                // Logo Anda akan terlihat jelas di atas background hitam
                 Image.asset('assets/images/Logo.jpg', height: 80),
                 const SizedBox(height: 20),
                 _buildEmailField(),

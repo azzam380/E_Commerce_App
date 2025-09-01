@@ -8,7 +8,7 @@ import 'cart_provider.dart';
 import 'detail_page.dart';
 
 // UPDATE: Mendefinisikan tema warna agar konsisten
-const Color primaryColor = Color(0xFF01B11E); // Hijau
+const Color primaryColor = Color(0xFF01B11E);
 const Color secondaryColor = Colors.black;
 const Color accentColor = Color(0xFF01B11E);
 
